@@ -1,0 +1,47 @@
+int main() {
+    char customerName[50];
+    int units;
+    float bill = 0, surcharge = 0, totalBill;
+
+    printf("===== Electricity Bill Generator =====\n");
+
+    printf("Enter Customer Name: ");
+    scanf("%s", customerName);
+
+    printf("Enter Units Consumed: ");
+    scanf("%d", &units);
+
+    // Bill Calculation
+    if (units <= 100) {
+        bill = units * 1.5;
+    }
+    else if (units <= 200) {
+        bill = (100 * 1.5) + ((units - 100) * 2.5);
+    }
+    else if (units <= 300) {
+        bill = (100 * 1.5) + (100 * 2.5) + ((units - 200) * 4.0);
+    }
+    else {
+        bill = (100 * 1.5) + (100 * 2.5) + (100 * 4.0)
+               + ((units - 300) * 6.0);
+    }
+
+    // Surcharge
+    if (bill > 1000) {
+        surcharge = bill * 0.10;
+    }
+
+    totalBill = bill + surcharge;
+
+    // Display Bill
+    printf("\n========== ELECTRICITY BILL ==========\n");
+    printf("Customer Name : %s\n", customerName);
+    printf("Units Consumed: %d\n", units);
+    printf("Bill Amount   : Rs. %.2f\n", bill);
+    printf("Surcharge     : Rs. %.2f\n", surcharge);
+    printf("--------------------------------------\n");
+    printf("Total Bill    : Rs. %.2f\n", totalBill);
+    printf("======================================\n");
+
+    return 0;
+}
